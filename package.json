@@ -1,0 +1,10 @@
+{
+  "name": "a2c-learning",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start:ai-travel": "node prototypes/ai-travel-assistant/server.mjs",
+    "check:ai-travel": "node --check prototypes/ai-travel-assistant/server.mjs"
+  }
+}
