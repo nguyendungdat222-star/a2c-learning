@@ -1,0 +1,99 @@
+{
+  "brand": {
+    "name": "A2C Travel",
+    "website": "https://a2ctravel.com",
+    "hotline": "0900000000",
+    "zaloUrl": "https://zalo.me/0900000000"
+  },
+  "destinations": [
+    {
+      "id": "quang-ngai",
+      "name": "Quang Ngai",
+      "province": "Quang Ngai",
+      "summary": "Diem den ven bien mien Trung noi bat voi dao Ly Son, bien My Khe, Sa Huynh, nui Thien An va am thuc dia phuong.",
+      "bestFor": ["bien dao", "am thuc", "gia dinh", "nhom ban", "chup anh"],
+      "suggestedDuration": "2-3 ngay"
+    },
+    {
+      "id": "ly-son",
+      "name": "Ly Son",
+      "province": "Quang Ngai",
+      "summary": "Huyen dao noi tieng voi cong To Vo, hang Cau, dinh Thoi Loi, chua Hang, dao Be va hai san.",
+      "bestFor": ["bien dao", "nghi duong ngan ngay", "chup anh", "hai san"],
+      "suggestedDuration": "2 ngay 1 dem"
+    }
+  ],
+  "tours": [
+    {
+      "id": "tour-ly-son-2n1d",
+      "title": "Tour Ly Son 2 ngay 1 dem",
+      "province": "Quang Ngai",
+      "destinations": ["Ly Son", "Dao Be", "Cong To Vo", "Hang Cau", "Dinh Thoi Loi"],
+      "duration": "2 ngay 1 dem",
+      "priceFromVnd": null,
+      "summary": "Lich trinh phu hop cho khach muon kham pha bien dao Ly Son, an hai san va chup anh cac diem noi bat.",
+      "suitableFor": ["cap doi", "gia dinh", "nhom ban", "doan nho"],
+      "includes": ["tu van lich trinh", "goi y luu tru", "goi y diem an uong"],
+      "excludes": ["chi phi ca nhan", "dich vu chua xac nhan trong bao gia"],
+      "bookingUrl": "https://a2ctravel.com/du-lich/quang-ngai/tour-ly-son-2-ngay-1-dem"
+    },
+    {
+      "id": "tour-my-khe-sa-huynh-1n",
+      "title": "Goi y My Khe - Sa Huynh trong ngay",
+      "province": "Quang Ngai",
+      "destinations": ["Bien My Khe", "Sa Huynh", "Dam An Khe"],
+      "duration": "1 ngay",
+      "priceFromVnd": null,
+      "summary": "Goi y lich trinh tiet kiem cho khach o TP Quang Ngai muon tham quan bien, lang chai va diem van hoa ven bien.",
+      "suitableFor": ["gia dinh", "khach tu tuc", "nhom ban"],
+      "includes": ["goi y diem den", "goi y an uong"],
+      "excludes": ["ve tham quan neu co", "xe dua don neu chua bao gia"],
+      "bookingUrl": "https://a2ctravel.com/du-lich/quang-ngai/my-khe-sa-huynh"
+    }
+  ],
+  "stays": [
+    {
+      "id": "stay-my-khe-family",
+      "name": "Luu tru gan bien My Khe cho gia dinh",
+      "type": "hotel_or_homestay",
+      "province": "Quang Ngai",
+      "area": "Bien My Khe",
+      "priceFromVnd": null,
+      "amenities": ["gan bien", "phu hop gia dinh", "de di chuyen"],
+      "bookingUrl": "https://a2ctravel.com/du-lich/quang-ngai/luu-tru"
+    },
+    {
+      "id": "stay-ly-son-basic",
+      "name": "Luu tru Ly Son gan diem tham quan",
+      "type": "hotel_or_homestay",
+      "province": "Quang Ngai",
+      "area": "Ly Son",
+      "priceFromVnd": null,
+      "amenities": ["gan bien", "phu hop nhom nho", "thuan tien di tour dao"],
+      "bookingUrl": "https://a2ctravel.com/du-lich/quang-ngai/luu-tru-ly-son"
+    }
+  ],
+  "food": [
+    {
+      "id": "food-quang-ngai-specialties",
+      "name": "Dac san Quang Ngai",
+      "province": "Quang Ngai",
+      "area": "TP Quang Ngai, My Khe, Ly Son",
+      "highlights": ["don", "ram bap", "ca bong song Tra", "hai san My Khe", "toi Ly Son", "keo guong"],
+      "suitableFor": ["khach lan dau den Quang Ngai", "gia dinh", "nhom ban"],
+      "bookingUrl": "https://a2ctravel.com/du-lich/quang-ngai/am-thuc"
+    }
+  ],
+  "policies": [
+    {
+      "id": "no-fake-price",
+      "title": "Nguyen tac bao gia",
+      "content": "AI khong tu dua gia, lich khoi hanh, tinh trang phong trong hoac chinh sach neu du lieu chua duoc A2C Travel xac nhan. Khi khach can gia, hay xin so dien thoai/Zalo de nhan vien gui bao gia."
+    },
+    {
+      "id": "lead-handoff",
+      "title": "Chuyen tu van vien",
+      "content": "Khi khach co nhu cau dat dich vu, AI can moi khach de lai ho ten, so dien thoai/Zalo, ngay di, so khach va dich vu quan tam."
+    }
+  ]
+}
