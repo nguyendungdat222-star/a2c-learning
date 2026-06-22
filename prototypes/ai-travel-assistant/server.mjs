@@ -61,9 +61,27 @@ function collectSearchableRecords(knowledge) {
   ];
 }
 
-function scoreRecord(questionTokens, record) {
+function intentBoost(question, recordType) {
+  const normalizedQuestion = normalizeText(question);
+
+  if (recordType === "tour" && (hasWord(question, ["tour", "ngay"]) || hasPhrase(normalizedQuestion, ["lich trinh", "di dau"]))) {
+    return 4;
+  }
+
+  if (recordType === "stay" && (hasWord(question, ["hotel", "homestay", "phong"]) || hasPhrase(normalizedQuestion, ["khach san", "luu tru"]))) {
+    return 4;
+  }
+
+  if (recordType === "food" && (hasWord(question, ["mon", "food"]) || hasPhrase(normalizedQuestion, ["an gi", "am thuc", "nha hang", "dac san"]))) {
+    return 4;
+  }
+
+  return 0;
+}
+
+function scoreRecord(question, questionTokens, record) {
   const haystack = normalizeText(flattenRecord(record.item));
-  let score = 0;
+  let score = intentBoost(question, record.type);
 
   for (const token of questionTokens) {
     if (haystack.includes(token)) score += 2;
@@ -89,7 +107,7 @@ function findRelevantContext(question, knowledge) {
   const records = collectSearchableRecords(knowledge);
 
   const scored = records
-    .map((record) => ({ ...record, score: scoreRecord(questionTokens, record) }))
+    .map((record) => ({ ...record, score: scoreRecord(question, questionTokens, record) }))
     .filter((record) => record.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, 6);
@@ -123,12 +141,21 @@ function systemPrompt(knowledge) {
   ].join("\n");
 }
 
+function hasPhrase(value, phrases) {
+  return phrases.some((phrase) => value.includes(phrase));
+}
+
+function hasWord(value, words) {
+  const wordSet = new Set(tokenize(value));
+  return words.some((word) => wordSet.has(word));
+}
+
 function fallbackReply(question, knowledge, context) {
   const brand = getBrand(knowledge);
   const normalizedQuestion = normalizeText(question);
-  const wantsFood = ["an", "mon", "am thuc", "food"].some((token) => normalizedQuestion.includes(token));
-  const wantsStay = ["khach san", "hotel", "homestay", "luu tru", "phong"].some((token) => normalizedQuestion.includes(token));
-  const wantsTour = ["tour", "lich trinh", "ngay", "di dau"].some((token) => normalizedQuestion.includes(token));
+  const wantsFood = hasWord(question, ["mon", "food"]) || hasPhrase(normalizedQuestion, ["an gi", "am thuc", "nha hang", "dac san"]);
+  const wantsStay = hasWord(question, ["hotel", "homestay", "phong"]) || hasPhrase(normalizedQuestion, ["khach san", "luu tru"]);
+  const wantsTour = hasWord(question, ["tour", "ngay"]) || hasPhrase(normalizedQuestion, ["lich trinh", "di dau"]);
 
   if (wantsFood) {
     return [
@@ -155,7 +182,7 @@ function fallbackReply(question, knowledge, context) {
   }
 
   return [
-    "Mình co the tu van tour, luu tru, am thuc va lich trinh du lich cho A2C Travel.",
+    "Minh co the tu van tour, luu tru, am thuc va lich trinh du lich cho A2C Travel.",
     "Ban cho minh biet tinh/thanh muon di, so ngay, so khach va ngan sach du kien nhe.",
     "Du lieu dang dung cho ban test:\n" + context.split("\n").slice(0, 8).join("\n")
   ].join("\n\n");
